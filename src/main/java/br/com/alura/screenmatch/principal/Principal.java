@@ -1,11 +1,13 @@
 package br.com.alura.screenmatch.principal;
 
+import br.com.alura.screenmatch.model.DadosEpisodios;
 import br.com.alura.screenmatch.model.DadosSeries;
 import br.com.alura.screenmatch.model.DadosTemporada;
 import br.com.alura.screenmatch.service.ConsumoApi;
 import br.com.alura.screenmatch.service.ConverterDados;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,6 +35,25 @@ public class Principal {
 			temporadas.add(dadosTemporada);
 		}
 		temporadas.forEach(System.out::println);
+
+//        for(int i = 0; i < dados.totalTemporadas(); i++){
+//            List<DadosEpisodios> episodiosTemporada = temporadas.get(i).episodios();
+//            for(int j = 0; j < episodiosTemporada.size(); j++){
+//                System.out.println(episodiosTemporada.get(j).titulo());
+//            }
+//        }
+
+        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
+
+        List<String> nomes =Arrays.asList("Thiago", "Matheus", "Davi", "Melissa");
+
+        nomes.stream()
+                .sorted()
+                .limit(2)
+                .filter(n -> n.startsWith("D"))
+                .map(n -> n.toUpperCase())
+                .forEach(System.out::println);
+
     }
 
 }
